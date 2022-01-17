@@ -11,7 +11,6 @@ export default class Todo extends Component {
 
     constructor(props) {
         super(props)
-        this.state = { description: '', list: [] }
 
         this.handleChange = this.handleChange.bind(this)
         this.handleAdd = this.handleAdd.bind(this)
@@ -21,6 +20,7 @@ export default class Todo extends Component {
         this.handleMarkAsDone = this.handleMarkAsDone.bind(this)
         this.handleMarkAsPending = this.handleMarkAsPending.bind(this)
 
+        this.state = { description: '', list: [] }
         this.refresh()
     }
 
@@ -35,9 +35,9 @@ export default class Todo extends Component {
     }
 
     handleAdd() {
+
         const description = this.state.description
-        axios.post(URL, { description })
-            .then(resp => this.refresh())
+        axios.post(URL, { description }).then(resp => this.refresh())
     }
 
     handleRemove(todo) {
